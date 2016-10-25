@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.example.liangmutian.airrecyclerview.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipe_to_load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.liangmutian.airrecyclerview.swipetoloadlayout.RefreshHeaderView
+            android:id="@+id/swipe_refresh_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+
+        <com.example.liangmutian.airrecyclerview.swipetoloadlayout.SwipeLoadMoreFooterLayout
+            android:id="@+id/swipe_load_more_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.example.liangmutian.airrecyclerview.swipetoloadlayout.SwipeLoadMoreFooterLayout>
+    </com.example.liangmutian.airrecyclerview.swipetoloadlayout.SwipeToLoadLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:text="没有数据" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:text="请求失败" />
+    </RelativeLayout>
+
+</FrameLayout>
+
+

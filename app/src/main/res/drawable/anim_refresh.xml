@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:oneshot="false"
+	>
+	<item android:drawable="@mipmap/n1" android:duration="50"></item>
+	<item android:drawable="@mipmap/n2" android:duration="50"></item>
+	<item android:drawable="@mipmap/n3" android:duration="50"></item>
+	<item android:drawable="@mipmap/n4" android:duration="50"></item>
+	<item android:drawable="@mipmap/n5" android:duration="50"></item>
+	<!--<item android:drawable="@mipmap/gpk" android:duration="15"></item>-->
+	<!--<item android:drawable="@mipmap/gpl" android:duration="15"></item>-->
+	<!--<item android:drawable="@mipmap/gpm" android:duration="15"></item>-->
+	<!--<item android:drawable="@mipmap/gpn" android:duration="15"></item>-->
+	<!--<item android:drawable="@mipmap/gpo" android:duration="15"></item>-->
+	<!--<item android:drawable="@mipmap/gpq" android:duration="15"></item>-->
+	<!--<item android:drawable="@mipmap/gpr" android:duration="15" ></item>-->
+<!--	<item android:drawable="@mipmap/gps" android:duration="150"></item>
+	<item android:drawable="@mipmap/gpt" android:duration="150"></item>
+	<item android:drawable="@mipmap/gpu" android:duration="150"></item>
+	<item android:drawable="@mipmap/gpv" android:duration="150"></item>-->
+</animation-list>
