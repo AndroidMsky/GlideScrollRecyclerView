@@ -12,7 +12,6 @@ import java.util.List;
 
 
 /**
- * Created by ex-liyongqiang001 on 16/7/1.
  */
 public class Adapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.BaseRecyclerViewHolder, ActType> {
 
@@ -35,12 +34,6 @@ public class Adapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.BaseRecycle
         ProductHolder productHolder = (ProductHolder) holder;
         productHolder.tvName.setText(data.name);
     }
-
-    @Override
-    public int getItemViewType(int position) {
-        return 0;
-    }
-
 
     class ProductHolder extends BaseRecyclerViewHolder {
         public TextView tvName;

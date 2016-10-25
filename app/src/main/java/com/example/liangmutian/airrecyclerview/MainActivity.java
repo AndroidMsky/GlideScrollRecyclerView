@@ -88,16 +88,9 @@ public class MainActivity extends AppCompatActivity
                 setData();
                 superRecyclerView.setRefreshing(false);
 
-                //execute the task
-
             }
 
         }, 3000);
-
-
-
-       //superRecyclerView.setRefreshing(false);
-
 
     }
 }
