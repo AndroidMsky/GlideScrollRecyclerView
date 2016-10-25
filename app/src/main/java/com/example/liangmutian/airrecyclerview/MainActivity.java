@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setData(){
         list.clear();
-        for (int i = 0; i < 1000000000; i++) {
+        for (int i = 0; i < 100; i++) {
             ActType info5 = new ActType("01");
             ActType info3 = new ActType("02");
             ActType info2 = new ActType("03");
