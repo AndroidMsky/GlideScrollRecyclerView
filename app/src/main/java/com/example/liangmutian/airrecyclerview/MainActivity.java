@@ -29,17 +29,18 @@ public class MainActivity extends AppCompatActivity
         superRecyclerView.init(new LinearLayoutManager(this), this, this);
         superRecyclerView.setRefreshEnabled(true);
         superRecyclerView.setLoadingMoreEnable(true);
+        // superRecyclerView.addOnAttachStateChangeListener();
 
 
-        for (int i = 0; i < 10; i++) {
-            ActType info5 = new ActType("01");
-            ActType info3 = new ActType("02");
-            ActType info2 = new ActType("03");
+        for (int i = 0; i < 3; i++) {
+            ActType info5 = new ActType("01", 1);
+            ActType info3 = new ActType("02", 2);
+            ActType info2 = new ActType("03", 1);
             list.add(info5);
             list.add(info3);
             list.add(info2);
         }
-        adapter = new Adapter(list);
+        adapter = new Adapter(list, this);
         superRecyclerView.setAdapter(adapter);
         superRecyclerView.showData();
         // adapter.setOnItemClickListener(itemClickListener);
@@ -47,12 +48,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void setData(){
+    private void setData() {
         list.clear();
-        for (int i = 0; i < 100; i++) {
-            ActType info5 = new ActType("01");
-            ActType info3 = new ActType("02");
-            ActType info2 = new ActType("03");
+        for (int i = 0; i < 3; i++) {
+            ActType info5 = new ActType("01", 2);
+            ActType info3 = new ActType("02", 1);
+            ActType info2 = new ActType("03", 2);
             list.add(info5);
             list.add(info3);
             list.add(info2);
@@ -64,24 +65,27 @@ public class MainActivity extends AppCompatActivity
     public void onLoadMore() {
 
 
-        ActType info2 = new ActType("new03");
+        ActType info2 = new ActType("04", 1);
+        ActType info3 = new ActType("03", 1);
+        ActType info4 = new ActType("02", 2);
 
 
         list.add(info2);
+        list.add(info3);
+
+        list.add(info4);
+
 
         adapter.notifyDataSetChanged();
 
         superRecyclerView.setLoadingMore(false);
-
-        superRecyclerView.moveToPosition(list.size() - 1);
-
 
     }
 
     @Override
     public void onRefresh() {
 
-        new Handler().postDelayed(new Runnable(){
+        new Handler().postDelayed(new Runnable() {
 
             public void run() {
 

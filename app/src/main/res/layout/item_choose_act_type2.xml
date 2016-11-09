@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#e6bdbd"
     android:weightSum="1">
 
     <View
@@ -13,7 +14,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:paddingLeft="15dp"
         android:layout_weight="0.36">
 
@@ -25,8 +26,9 @@
             android:layout_height="120dp"
             android:src="@mipmap/ic_launcher"
             android:rotationY="180"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/tv_type_name"
@@ -38,8 +40,8 @@
             android:textColor="#666666"
             android:textSize="16sp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_toRightOf="@+id/img_right"
+            android:layout_toEndOf="@+id/img_right"/>
 
 
     </RelativeLayout>
