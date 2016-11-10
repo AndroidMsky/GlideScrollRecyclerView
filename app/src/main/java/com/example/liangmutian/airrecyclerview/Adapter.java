@@ -1,6 +1,7 @@
 package com.example.liangmutian.airrecyclerview;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,10 @@ import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.example.liangmutian.airrecyclerview.swipetoloadlayout.BaseRecyclerAdapter;
 
 import java.util.List;
@@ -21,10 +26,8 @@ public class Adapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.BaseRecycle
 
     private List<ActType> list;
     private Context mContext;
-    private String url1 = "http://img2.imgtn.bdimg.com/it/u=2313041955,732263015&fm=21&gp=0.jpg";
-    private String url2 = "http://p4.yokacdn.com/pic/cr/2013/0115/2026031677.jpg";
-    private String url3 = "http://img5.imgtn.bdimg.com/it/u=3931738195,194607292&fm=21&gp=0.jpg";
-    private String url4 = "http://img0.imgtn.bdimg.com/it/u=1174544731,79277711&fm=21&gp=0.jpg";
+
+    private boolean skipcache = true;
 
 
     public Adapter(List<ActType> list, Context context) {
@@ -73,26 +76,26 @@ public class Adapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.BaseRecycle
                     }
                 });
 
-                if (data.name.equals("01"))
-                    Glide.with(mContext).load(url1)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .centerCrop()
-                            .into(productHolder.imgRight);
-                if (data.name.equals("02"))
-                    Glide.with(mContext).load(url2)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .centerCrop()
-                            .into(productHolder.imgRight);
-                if (data.name.equals("03"))
-                    Glide.with(mContext).load(url4)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .centerCrop()
-                            .into(productHolder.imgRight);
-                if (data.name.equals("04"))
-                    Glide.with(mContext).load(url3)
-                            .skipMemoryCache(true)
-                            .centerCrop()
-                            .into(productHolder.imgRight);
+                Glide.with(mContext).load(data.URl)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .centerCrop()
+                        .skipMemoryCache(skipcache)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .into(new GlideDrawableImageViewTarget(productHolder.imgRight) {
+                            @Override
+                            public void onResourceReady(GlideDrawable drawable, GlideAnimation anim) {
+                                super.onResourceReady(drawable, anim);
+                                Log.d("-------------------+", "" + (position+1));
+                            }
+                        });
+
+
+//                Glide.with(mContext).load(data.URl)
+//                        .placeholder(R.mipmap.ic_launcher)
+//                        .centerCrop()
+//                        .skipMemoryCache(true)
+//                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+//                        .into();
 
 
                 break;
@@ -109,27 +112,22 @@ public class Adapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.BaseRecycle
                     }
                 });
 
-                if (data.name.equals("01"))
-                    Glide.with(mContext).load(url1)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .centerCrop()
-                            .into(productHolder2.imgRight);
-                if (data.name.equals("02"))
-                    Glide.with(mContext).load(url2)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .centerCrop()
-                            .into(productHolder2.imgRight);
-                if (data.name.equals("03"))
-                    Glide.with(mContext).load(url4)
-                            .placeholder(R.mipmap.ic_launcher)
-                            .centerCrop()
-                            .into(productHolder2.imgRight);
-                if (data.name.equals("04"))
-                    Glide.with(mContext).load(url3)
-                            .skipMemoryCache(true)
-                            .centerCrop()
-                            .into(productHolder2.imgRight);
 
+                Glide.with(mContext).load(data.URl)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(skipcache)
+
+                        .centerCrop()
+
+                        .into(new GlideDrawableImageViewTarget(productHolder2.imgRight) {
+                            @Override
+                            public void onResourceReady(GlideDrawable drawable, GlideAnimation anim) {
+                                super.onResourceReady(drawable, anim);
+                                Log.d("--------------------", "" + (position+1));
+                                //progressBar.setVisibility(View.GONE);
+                            }
+                        });
                 break;
 
         }
@@ -137,7 +135,7 @@ public class Adapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.BaseRecycle
 
     }
 
-    class ProductHolder extends BaseRecyclerViewHolder {
+     class ProductHolder extends BaseRecyclerViewHolder {
         public TextView tvName;
         public ImageView imgRight;
 
@@ -149,9 +147,9 @@ public class Adapter extends BaseRecyclerAdapter<BaseRecyclerAdapter.BaseRecycle
         }
     }
 
-    class ProductHolder2 extends BaseRecyclerViewHolder {
+     class ProductHolder2 extends BaseRecyclerViewHolder {
         public TextView tvName;
-        public ImageView imgRight;
+        public  ImageView imgRight;
 
         public ProductHolder2(View itemView) {
             super(itemView);

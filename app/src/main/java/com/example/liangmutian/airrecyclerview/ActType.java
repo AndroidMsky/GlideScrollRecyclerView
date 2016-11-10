@@ -14,9 +14,12 @@ public class ActType implements Serializable {
     public int showType;
     public String name;
     public String code;
+
+    public String URl;
     public ArrayList<ActType> actTypeList=new ArrayList<>();
-    public ActType(String code,int showType){
+    public ActType(String code,int showType,String url){
         this.showType=showType;
+        this.URl=url;
         this.name= code;
         this.code=code;
     }

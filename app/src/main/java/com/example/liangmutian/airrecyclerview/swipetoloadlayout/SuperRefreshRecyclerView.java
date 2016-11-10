@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -26,6 +27,9 @@ public class SuperRefreshRecyclerView extends FrameLayout {
     private RecyclerView.LayoutManager layoutManager;
 
     private Context mContext;
+
+
+    ChangeScrollStateCallback mChangeScrollStateCallback;
 
     public SuperRefreshRecyclerView(Context context) {
         super(context);
@@ -145,6 +149,18 @@ public class SuperRefreshRecyclerView extends FrameLayout {
     }
 
     class RecyclerViewListener extends RecyclerView.OnScrollListener{
+
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+
+            mChangeScrollStateCallback.change(newState);
+
+            //Log.d("AAAAAAAAAAAAAAA", "" + newState);
+
+
+        }
+
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
@@ -162,5 +178,10 @@ public class SuperRefreshRecyclerView extends FrameLayout {
                 }
             }
         }
+    }
+
+    public void setChangeScrollStateCallback(ChangeScrollStateCallback mChangeScrollStateCallback){
+        this.mChangeScrollStateCallback=mChangeScrollStateCallback;
+
     }
 }
